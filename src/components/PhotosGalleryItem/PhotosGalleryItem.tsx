@@ -1,9 +1,9 @@
-import styles from "./PhotosGalleryItem.module.css";
-import { type Photo } from "../../types/photo";
+import styles from './PhotosGalleryItem.module.css';
+import { type Photo } from '../../types/photo';
 
 interface PhotosGalleryItemProps {
   photo: Photo;
-  onClick: () => void;
+  onClick: (photo: Photo) => void;
 }
 
 export default function PhotosGalleryItem({
