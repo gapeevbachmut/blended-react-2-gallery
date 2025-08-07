@@ -1,14 +1,14 @@
-import Section from "../Section/Section";
-import Container from "../Container/Container";
-import Form from "../Form/Form";
-import toast from "react-hot-toast";
-import PhotosGallery from "../PhotosGallery/PhotosGallery";
-import { type Photo } from "../../types/photo";
-import { useState } from "react";
-import { getPhotos } from "../../services/photos";
-import Loader from "../Loader/Loader";
-import Text from "../Text/Text";
-import Modal from "../Modal/Modal";
+import Section from '../Section/Section';
+import Container from '../Container/Container';
+import Form from '../Form/Form';
+import toast from 'react-hot-toast';
+import PhotosGallery from '../PhotosGallery/PhotosGallery';
+import { type Photo } from '../../types/photo';
+import { useState } from 'react';
+import { getPhotos } from '../../services/photos';
+import Loader from '../Loader/Loader';
+import Text from '../Text/Text';
+import Modal from '../Modal/Modal';
 
 export default function App() {
   const [photo, setPoto] = useState<Photo[]>([]);
@@ -25,24 +25,24 @@ export default function App() {
   };
 
   const handleForm = async (query: string) => {
-    console.log("input", query);
+    console.log('input', query);
     setIsLoading(true);
     setIsEmpty(false);
     try {
       setPoto([]); // очищаю попередній запит
       const resultArrPhotos = await getPhotos(query);
-      console.log("responce", resultArrPhotos); // відповідь - масив
+      console.log('responce', resultArrPhotos); // відповідь - масив
 
       if (!resultArrPhotos.length) {
         setIsEmpty(true);
-        toast.error("Не знайдено фото, по Вашему запиту!");
+        toast.error('За Вашим запитом, фото не знайдене!');
         return;
       }
 
       setPoto(resultArrPhotos);
       // зміна стану з отриманими результатами пошуку
     } catch {
-      console.log("Error", "Помилка");
+      console.log('Error', 'Помилка');
     } finally {
       setTimeout(() => {
         setIsLoading(false);
